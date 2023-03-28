@@ -48,4 +48,8 @@ jobs:
       with:
         arguments: bootBuildImage --imageName ghcr.io/${{ github.repository }}
     - name: Push
-      run: docker push ghcr.io/${{ github.repository }}
+      run: |
+        docker push ghcr.io/${{ github.repository }}
+        docker tag ghcr.io/${{ github.repository }} us-east4-docker.pkg.dev/gdrivebackup-1594802257568/openai-azure-proxy/gradle-image:${{ github.ref }}
+        docker push us-east4-docker.pkg.dev/gdrivebackup-1594802257568/openai-azure-proxy/gradle-image:${{ github.ref }}
+
