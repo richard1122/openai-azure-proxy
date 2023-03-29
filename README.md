@@ -1,6 +1,8 @@
 # openai-azure-proxy
 A server to delegate OpenAI chat requests to Azure OpenAI service. Since now most ChatGPT clients did not support Azure OpenAI service.
 
+Privacy Policy: I do not collect any data sent through this server. To avoid any accidential data leak, a self deployment is recommanded. 
+
 Goal:
 - Make ChatGPT clients ([OpenCat](https://opencat.app) currently) work.
 - Delegate **Chat** requests to Azure OpenAI service.
