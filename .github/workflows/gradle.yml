@@ -57,3 +57,4 @@ jobs:
       with:
         service: 'openai-azure-proxy'
         image: '${{ vars.GCP_CONTAINER_REPOSITORY }}/${{ vars.GCP_CONTAINER_NAME }}:$GITHUB_SHA'
+        region: 'asia-east1'
