@@ -52,9 +52,3 @@ jobs:
         docker push ghcr.io/${{ github.repository }}
         docker tag ghcr.io/${{ github.repository }} ${{ vars.GCP_CONTAINER_REPOSITORY }}/${{ vars.GCP_CONTAINER_NAME }}:$GITHUB_SHA
         docker push ${{ vars.GCP_CONTAINER_REPOSITORY }}/${{ vars.GCP_CONTAINER_NAME }}:$GITHUB_SHA
-    - id: 'deploy'
-      uses: 'google-github-actions/deploy-cloudrun@v1'
-      with:
-        service: 'openai-azure-proxy'
-        image: '${{ vars.GCP_CONTAINER_REPOSITORY }}/${{ vars.GCP_CONTAINER_NAME }}:$GITHUB_SHA'
-        region: 'asia-east1'
