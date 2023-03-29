@@ -35,7 +35,7 @@ jobs:
         token_format: access_token
     - uses: 'docker/login-action@v1'
       with:
-        registry: 'us-east4-docker.pkg.dev'
+        registry: '${{ vars.GCP_CONTAINER_REPOSITORY }}'
         username: 'oauth2accesstoken'
         password: '${{ steps.auth.outputs.access_token }}'
     - name: Set up JDK 17
@@ -50,6 +50,5 @@ jobs:
     - name: Push
       run: |
         docker push ghcr.io/${{ github.repository }}
-        docker tag ghcr.io/${{ github.repository }} us-east4-docker.pkg.dev/gdrivebackup-1594802257568/openai-azure-proxy/gradle-image:$GITHUB_SHA
-        docker push us-east4-docker.pkg.dev/gdrivebackup-1594802257568/openai-azure-proxy/gradle-image:$GITHUB_SHA
-
+        docker tag ghcr.io/${{ github.repository }} ${{ vars.GCP_CONTAINER_REPOSITORY }}/${{ vars.GCP_CONTAINER_NAME }}:$GITHUB_SHA
+        docker push ${{ vars.GCP_CONTAINER_REPOSITORY }}/${{ vars.GCP_CONTAINER_NAME }}:$GITHUB_SHA
