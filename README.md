@@ -23,15 +23,13 @@ Make sure `gpt-35-turbo` is deployed in your Azure OpenAI studio.
 
 ### Settings in OpenCat
 
-- Model: gpt-3.5-turbo
+- Model: gpt-3.5-turbo, gpt-4, gpt-4-32k
 - API key: Your **Azure** OpenAI key
 - Custom API Domain: `openai-azure-proxy-wykw6ffdpa-de.a.run.app/azure/$YOUR ENDPOINT`.
 Endpoint is in your Azure Portal, such as: `https://your-deployment-id.openai.azure.com`.
 Please use **your-deployment-id** part in the custom API domain. The full Custom API domain should be like:
 `openai-azure-proxy-wykw6ffdpa-de.a.run.app/azure/YOUR_DEPLOYMENT_ID`.
 - Check **Send API Key**
-
-[#] GPT4: Currently I do not have a GPT4 enabled Azure OpenAI deployment.
 
 ## Self deployment
 
