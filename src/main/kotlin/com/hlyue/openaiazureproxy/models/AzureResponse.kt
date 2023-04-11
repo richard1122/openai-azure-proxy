@@ -16,10 +16,13 @@ data class OAIModel(
     val root: String
 ) {
     companion object {
-        val AZURE_OPENAI_MODEL_MAP = mapOf("gpt-35-turbo" to "gpt-3.5-turbo")
+        private val AZURE_OPENAI_MODEL_MAP = mapOf("gpt-35-turbo" to "gpt-3.5-turbo")
+
+        fun getOAIModelFromAzure(model: String) =
+            AZURE_OPENAI_MODEL_MAP.getOrDefault(model, model)
 
         fun fromAzureModel(model: AzureModel): OAIModel {
-            val oaiModelName = AZURE_OPENAI_MODEL_MAP.getOrDefault(model.model, model.model)
+            val oaiModelName = getOAIModelFromAzure(model.model)
             return OAIModel(
                 id = oaiModelName,
                 `object` = "model",

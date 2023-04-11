@@ -40,7 +40,7 @@ class AzureClient(request: ServerRequest) {
         return cachedChats.flatMap {
             val requestModel = jacksonObjectMapper().readValue<ChatRequest>(it).model
             listModels().flatMapIterable { it.data }
-                .filter { OAIModel.AZURE_OPENAI_MODEL_MAP[it.model] == requestModel }.single()
+                .filter { OAIModel.getOAIModelFromAzure(it.model) == requestModel }.single()
         }.flatMapMany { model ->
             // Convert OpenAI response to an entity is not necessary, and the last SSE response is not JSON.
             // Passing string directly to client is enough.
